@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+    // Esta clase es necesaria para configurar el dominio desde el cual se adimiten peticiones
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
