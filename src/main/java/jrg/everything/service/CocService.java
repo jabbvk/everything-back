@@ -7,6 +7,7 @@ import java.net.http.HttpResponse;
 
 import org.springframework.stereotype.Service;
 
+// Clase que se encarga de realizar peticiones a la API de Clash of Clans.
 @Service
 public class CocService {
 
@@ -21,8 +22,6 @@ public class CocService {
                     .build();
 
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
-            System.out.println("Response: " + response.body());
 
             if (response.statusCode() != 200) {
                 return null;

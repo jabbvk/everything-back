@@ -17,7 +17,7 @@ public class User {
     private Long id;
 
     private String name;
-    private String mail;
+    private String email;
     
     @Lob
     @Column(nullable = false)
@@ -44,12 +44,12 @@ public class User {
         this.name = name;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public byte[] getPassword() {
@@ -66,10 +66,6 @@ public class User {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public String toString() {
-        return "User [id=" + id + ", name=" + name + ", mail=" + mail + ", password=" + password_hash + ", createdAt=" + createdAt + "]";
     }
 }
 

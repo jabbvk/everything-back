@@ -9,6 +9,6 @@ import jrg.everything.models.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByMail(String mail);
+    User findByEmail(String email);
     
 }
