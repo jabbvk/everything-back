@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jrg.everything.models.User;
 import jrg.everything.service.UserService;
 import jrg.everything.utils.PasswordUtil;
@@ -18,7 +19,24 @@ public class ControllerUser {
 
     @Autowired
     private UserService userService;
+
+    @PostMapping("/preRegister")
+    public String preRegister(@RequestBody Map<String, Object> payload) {
+
+        // sendMail((String) payload.get("email"));
+
+        User user = new User();
+        user.setName((String) payload.get("name"));
+        user.setMail((String) payload.get("mail"));
+        user.setPassword(PasswordUtil.hashPassword((String) payload.get("password")));
+        userService.saveUser(user);
+
+        System.out.println(userService.getUserByMail(user.getMail()));
+
+        return "register";
+    }
     
+    @Operation(summary = "Obtener usuario por email", description = "Devuelve la información de un usuario a partir de su correo electrónico.")
     @PostMapping("/register")
     public String register(@RequestBody Map<String, Object> payload) {
 
